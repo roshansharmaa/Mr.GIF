@@ -6,8 +6,9 @@ function Maincomp({ imgs }) {
   return (
     <>
       <Box
+        key={imgs}
         sx={{
-          margin: "4.5rem auto 0 auto",
+          marginTop: { xs: "3.8rem", sm: "4.2rem", md: "4.2rem", lg: "4.2rem" },
           columnCount: { xs: 2, sm: 3, md: 4, lg: 5 },
           columnGap: "0.2rem",
           width: "100%",
@@ -29,7 +30,9 @@ function Maincomp({ imgs }) {
                   objectFit: "cover",
                   borderRadius: ".5rem",
                 }}
-              />
+              >
+                
+              </Box>
             </Link>
           );
         })}

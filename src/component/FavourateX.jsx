@@ -11,7 +11,7 @@ import React from "react";
 import CancelIcon from "@mui/icons-material/Cancel";
 
 function FavourateX({ fav, setfav }) {
-  let x = ["fav", 2, 3, 4, 5, 6, 7, 8, 9];
+  let x = ['WE ARW WORKIN ON IT'];
 
   return (
     <>
@@ -25,6 +25,7 @@ function FavourateX({ fav, setfav }) {
           "& .MuiDrawer-paper": {
             width: "50%",
             height: "100%",
+            bgcolor:'#1976d2'
           },
         }}
       >

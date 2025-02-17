@@ -1,41 +1,69 @@
-import React, { Link } from "react";
-import { Box } from "@mui/material";
-import Maincomp from "../component/Maincomp";
-import Button from "@mui/joy/Button";
+import React, { useState, useContext, useEffect } from "react";
+import { Box, Button } from "@mui/material";
+import { data, Link } from "react-router-dom";
+// import Button from "@mui/joy/Button";
 import Modal from "@mui/joy/Modal";
 import ModalClose from "@mui/joy/ModalClose";
 import Typography from "@mui/joy/Typography";
 import Sheet from "@mui/joy/Sheet";
+import { Gifstate, Maindata } from "../contextx/Data"; ///dj
+import Filterpage from "../component/Filterpage";
 function Home() {
-  const [open, setOpen] = React.useState(true);
-  let demo = () => {
-    let num = Math.floor(Math.random() * 4) + 1;
-    return num;
-  };
+  const [open, setOpen] = useState(false);
+  const [mainhomegif, setmainhomegif] = useState([]);
+  const { gifmaindata, filter, setfilter, favourate, view, setview } =
+    Gifstate();
+  let fetchhomedata = async () => {
+    try {
+      const { data } = await gifmaindata.trending(); //ye bta
+      setmainhomegif(data);
+    } catch (e) {
+      alert(e,'Some Error occurd in Fetchin data')
 
-  let imgs = [
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-    `https://picsum.photos/${demo()}00/${demo()}00.jpg`,
-  ];
+    }
+  };
+  
+
+
+  useEffect(() => {
+    fetchhomedata();
+  }, [gifmaindata]);
   return (
     <>
-      <Maincomp imgs={imgs} />
+      <Box
+        sx={{
+          marginTop: {},
+          columnCount: { xs: 2, sm: 3, md: 5, lg: 5 },
+          columnGap: "0.2rem",
+          width: "100%",
+        }}
+      >
+        {
+        
 
+        mainhomegif.map((e, i) => (
+          <Link to="/view" key={i}>
+            <Box
+              onClick={()=>setview((prev) => ({
+                ...prev,
+                url: e.images.fixed_width.url, //yaha set kiya clik pe
+                name: e.title,
+                cat: e.rating,           
+              }))}
+              component="img"
+              src={e.images.fixed_width.url}
+              sx={{
+                width: "98%",
+                marginBottom: "1rem",
+                height: "auto",
+                display: "block",
+                objectFit: "cover",
+                borderRadius: ".5rem",
+              }}
+            />
+          </Link>
+        ))}
+      </Box>
       <Modal
         aria-labelledby="modal-title"
         aria-describedby="modal-desc"
@@ -58,12 +86,21 @@ function Home() {
             This Webpage is under Process
           </Typography>
           <Typography id="modal-desc" textColor="text.tertiary">
-          This webpage is currently for display purposes only. API integration is in progress
+            This webpage is currently for display purposes only. API integration
+            is in progress
           </Typography>
+          <Button
+            onClick={() => setOpen(false)}
+            variant="contained"
+            color="error"
+            sx={{ margin: "10px 0 0 0" }}
+          >
+            Okay
+          </Button>
         </Sheet>
       </Modal>
+      <Filterpage/>
     </>
   );
 }
-
 export default Home;

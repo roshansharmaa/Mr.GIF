@@ -18,3 +18,9 @@ body {
   display: flex;
   justify-content: center;
 }
+
+
+
+body::-webkit-scrollbar {
+  display: none;
+}

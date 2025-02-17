@@ -5,20 +5,23 @@
 
   }
 
-  h5 {
-    padding: .3rem;
-    border-radius: 5px;
-    border-bottom: 5px solid transparent;
-    border-image: linear-gradient(90deg, #00ffa2 0%, #ff1b02 100%) 1;
+  h6 {
+    padding: .1rem;
+    border-radius: 3px;
+    border-bottom: 3px solid white;
+
     transition: .4s ease;
     /* font-style:bold; */
     font-weight: 600;
     color: white;
+     
 
     cursor: pointer;
 
     &&:hover {
       background-image: linear-gradient(90deg, #00ffa2 0%, #ff1b02 100%);
+      border-image: linear-gradient(90deg, #00ffa2 0%, #ff1b02 100%) 1;
+
       transition: .5s ease-out;
       color: black;
     }
@@ -29,14 +32,28 @@
     text-decoration: none;
     color: white;
     cursor: pointer;
+     
 
     margin: 0;
     padding: 0;
   }
 }
+input{
+  background: rgba(255, 255, 255, 0.296);
+  border-radius: 15px;
+  border: 2px solid rgb(3, 3, 3);
+  border: none;
+  
+  transition: .3s ease-in-out;
 
+  &&:hover{
+
+    border: 2px solid #0068d0;
+  }
+
+}
 @media screen and (max-width:768px) {
-  h5 {
+  h6 {
     display: none;
   }
 }
