@@ -8,6 +8,7 @@ function Dataprovider({ children }) {
   let [favourate, setfavourate] = useState([]);
   let [filter, setfilter] = useState("");
   let [laststate, setlaststate] = useState("");
+  let [categoryview, setcategoryview] = useState("");
   let [view, setview] = useState({
     url: "https://media3.giphy.com/media/v1.Y2lkPTA2N2YyODc4czZpcHFxbGhjbjR2c3N1ZmVhcGpodTcxN2V5d283aWFrNzBnMm80dyZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/ZOwljDSMNr1rV76DMc/200w.gif",
     name: false,
@@ -28,6 +29,8 @@ function Dataprovider({ children }) {
         setview, //pass kiya
         setlaststate,
         laststate,
+        categoryview,
+setcategoryview
       }}
     >
       {children}

@@ -9,6 +9,7 @@ import NoPage from "./pages/NoPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Filterpage from "./component/Filterpage";
 import GitHubIcon from '@mui/icons-material/GitHub';
+import Categoryview from "./component/Categoryview";
 function App() {
   const { filter, setfilter } = Gifstate();
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path={nav} element={filter ? <Home /> : <Filterpage />} />
           <Route path="/category" element={<Filterpage />} />
+          <Route path="/category/view" element={<Categoryview />} />
           <Route path="/view" element={<GifView />} />
           <Route path="*" element={<NoPage />} />
       </Routes>

@@ -72,10 +72,10 @@ function GifView() {
           // src="https://imgs.search.brave.com/Jx8eAt3b3FFc7T8qGmK4AjpohtGB8b4pA1TYkGAkfTQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA5LzY1LzEzLzk0/LzM2MF9GXzk2NTEz/OTQwOV9JT21HVGVQ/Z2ZFVW44ek1YWnFw/YTlPRXRpRmJndkVC/TC5qcGc"
           src={update ? update : view.url} //yaha use kiya sahi na
           sx={{
-            height: {
+            width: {
               xs: "20rem",
-              sm: "20rem",
-              md: "20rem",
+              sm: "25rem",
+              md: "30rem",
               lg: "40rem",
             },
             margin: "0 auto",

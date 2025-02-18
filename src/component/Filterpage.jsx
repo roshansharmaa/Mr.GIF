@@ -2,10 +2,9 @@ import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Gifstate } from "../contextx/Data";
-import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
-
+import CategoryIcon from '@mui/icons-material/Category';
 function Filterpage() {
-  const {  gifmaindata, filter, setlaststate } = Gifstate();
+  const {  gifmaindata, filter, categoryview, setcategoryview } = Gifstate();
   let [filterdata, setfilterdata] = useState([]);
   const search = async () => {
     try {
@@ -18,16 +17,17 @@ function Filterpage() {
     }
   };
 
+
+  
+
   // ma();
   useEffect(() => {
     search();
   }, [filter]);
   return (
     <>
-      <Typography variant="h6" color="initial">
-        {" "}
-        <WorkspacePremiumIcon fontSize="2rem" color="info" /> Not Dowlodabel (
-        View only ) Category:- {filter ? filter : "Action"}
+      <Typography variant="h5" color="initial" mb={2} borderRadius={'0px 10px'}  bgcolor='#1976d2' width='300px' alignItems="center">
+        <CategoryIcon fontSize="2rem" />  Category:- {filter ? filter : "Action"}
       </Typography>
       <Box
         sx={{
@@ -42,11 +42,11 @@ function Filterpage() {
         ) : (
           filterdata.map((e, i) => {
             return (
-              <Link to={"/view"} key={i}>
+              <Link to={"/category/view"} key={i}>
                 <Box
                   component="img"
                   src={e.images.fixed_width.url}
-                  onClick={() => setlaststate(e.images.fixed_width.url)}
+                  onClick={() => setcategoryview(e.images.fixed_width.url)}
                   sx={{
                     width: "98%",
                     marginBottom: "1rem",
